@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplikasi Ekskul Sekolah</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>FORM PENDAFTARAN EKSTRAKURIKULER SCHOOL HEROES</h1>
+        <p>"Kembangkan Minat, Asa Bakat, dan Jadilah Bintang di Sekolah!"</p>
+        <p>Pilih ekstrakurikuler impianmu dan bergabunglah dengan komunitas yang tepat untuk mengasah potensimu.</p>
+      </header>
+
+      <section class="card hero">
+        <div class="hero-content">
+          <h2>Ekskul yang tersedia</h2>
+          <p>Pilih kegiatan yang sesuai dengan minat dan bakatmu.</p>
+        </div>
+        <div class="ekskul-grid">
+          <div class="ekskul-card">💃 Nari</div>
+          <div class="ekskul-card">🎤 Vokal</div>
+          <div class="ekskul-card">🎵 Musik</div>
+          <div class="ekskul-card">🥁 Marching Band</div>
+          <div class="ekskul-card">🎖️ Paskibra</div>
+          <div class="ekskul-card">🏕️ Pramuka</div>
+          <div class="ekskul-card">🗣️ Debat</div>
+          <div class="ekskul-card">⚽ Futsal</div>
+          <div class="ekskul-card">🏐 Voli</div>
+          <div class="ekskul-card">🏀 Basket</div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Form Pendaftaran</h2>
+        <form id="studentForm">
+          <div class="grid">
+            <label>
+              Nama Lengkap
+              <input type="text" id="nama" placeholder="Contoh: Budi Santoso" required />
+            </label>
+            <label>
+              Kelas
+              <select id="kelas" required>
+                <option value="">Pilih kelas</option>
+                <option value="X">X</option>
+                <option value="XI">XI</option>
+                <option value="XII">XII</option>
+              </select>
+            </label>
+            <label>
+              Nomor WhatsApp Active
+              <input type="tel" id="hp" placeholder="0812xxxxxxx" required />
+            </label>
+            <label>
+              Jenis Kelamin
+              <div class="radio-group">
+                <label><input type="radio" name="gender" value="Laki-laki" required /> Laki-laki</label>
+                <label><input type="radio" name="gender" value="Perempuan" required /> Perempuan</label>
+              </div>
+            </label>
+          </div>
+
+          <label>
+            Pilihan Ekstrakurikuler
+            <select id="ekskul" required>
+              <option value="">Pilih ekskul</option>
+              <option value="Nari">Nari (Seni Tari)</option>
+              <option value="Vokal">Vokal</option>
+              <option value="Musik">Musik</option>
+              <option value="Marching Band">Marching Band</option>
+              <option value="Paskibra">Paskibra</option>
+              <option value="Pramuka">Pramuka</option>
+              <option value="Debat">Debat</option>
+              <option value="Futsal">Futsal</option>
+              <option value="Voli">Voli</option>
+              <option value="Basket">Basket</option>
+            </select>
+          </label>
+
+          <label>
+            Alasan Bergabung
+            <textarea id="alasan" rows="4" placeholder="Tuliskan alasan singkatmu" required></textarea>
+          </label>
+
+          <div id="themePreview" class="theme-preview" aria-live="polite">
+            <div id="previewOrb" class="preview-orb">✨</div>
+            <div>
+              <h3 id="previewTitle">Pilih ekskul</h3>
+              <p id="previewText">Animasi akan muncul sesuai bidang kegiatan yang kamu pilih.</p>
+            </div>
+          </div>
+
+          <button type="submit">🚀 KIRIM PENDAFTARAN SEKARANG</button>
+        </form>
+        <p id="message" class="message"></p>
+      </section>
+      <section class="card admin-section" id="adminLoginSection">
+        <h2>Akses Khusus Pengurus & Admin</h2>
+        <p>Masukkan kata sandi untuk mengelola data siswa yang terdaftar.</p>
+        <form id="adminLoginForm">
+          <label>
+            Kata Sandi Admin
+            <input type="password" id="adminPassword" required />
+          </label>
+          <button type="submit">Masuk ke Dashboard</button>
+        </form>
+      </section>
+
+      <section class="card admin-section hidden" id="adminSection">
+        <div class="section-title">
+          <h2>DASHBOARD PENGELOLA EKSTRAKURIKULER</h2>
+          <button type="button" id="logoutBtn" class="secondary">🔒 Keluar dari Mode Admin</button>
+        </div>
+
+        <div class="admin-summary">
+          <p>Total Siswa Terdaftar: <strong id="totalRegistered">0</strong> Siswa</p>
+          <p>Ekskul Paling Populer: <strong id="popularEkskul">-</strong></p>
+        </div>
+
+        <div class="admin-actions">
+          <label>
+            Filter Berdasarkan Ekskul
+            <select id="adminFilter">
+              <option value="">Semua Ekskul</option>
+              <option value="Nari">Nari</option>
+              <option value="Vokal">Vokal</option>
+              <option value="Musik">Musik</option>
+              <option value="Marching Band">Marching Band</option>
+              <option value="Paskibra">Paskibra</option>
+              <option value="Pramuka">Pramuka</option>
+              <option value="Debat">Debat</option>
+              <option value="Futsal">Futsal</option>
+              <option value="Voli">Voli</option>
+              <option value="Basket">Basket</option>
+            </select>
+          </label>
+          <button type="button" id="downloadCsv">📥 Unduh Rekapan Data (CSV)</button>
+        </div>
+
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Nama Siswa</th>
+                <th>Kelas</th>
+                <th>Kontak WA</th>
+                <th>Gender</th>
+                <th>Ekskul Yang Dipilih</th>
+                <th>Tanggal Daftar</th>
+              </tr>
+            </thead>
+            <tbody id="adminTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-title">
+          <h2>Daftar Pendaftar</h2>
+          <span id="count">0 pendaftar</span>
+        </div>
+        <div id="listPeserta" class="list"></div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
